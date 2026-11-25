@@ -1,1 +1,1 @@
-import './globals.css'; export const metadata={title:'NovaStack Studio | Websites that work',description:'Independent web development studio in Kerala.'}; export default function Layout({children}){return <html lang="en"><body>{children}</body></html>}
+import './globals.css';export const metadata={title:'Saviyo George | Freelance Full Stack Developer',description:'Freelance web developer in Kerala building business websites, e-commerce experiences and custom web applications.'};export default function Layout({children}){return <html lang="en"><body>{children}</body></html>}
