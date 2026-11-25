@@ -1,6 +1,376 @@
 'use client';
 import {useState} from 'react';
-const projects=[{name:'StayKerala',type:'Hospitality',desc:'A resort discovery and booking frontend concept designed around room exploration and enquiry journeys.',url:'stay_kerala',style:'resort',mark:'STAY / KERALA'},{name:'Vernon Men',type:'E-commerce',desc:'A menswear storefront concept focused on product discovery and a premium shopping experience.',url:'Vernon-men',style:'fashion',mark:'VERNON.'},{name:'CRM application',type:'Business software',desc:'Internship experience contributing to role-based customer and lead management, payment integration and chart displays.',style:'crm',mark:'CRM / DASHBOARD'}];
-const services=[['01','Business websites','A polished online home for your business, built to make it easier for customers to discover and contact you.','Responsive design · SEO foundations · Enquiry flows'],['02','Online stores','Product-focused storefronts with intuitive browsing and shopping experiences.','Catalogues · Cart · Payment integration by scope'],['03','Custom web applications','Practical tools that simplify everyday business operations.','Dashboards · CRM · REST APIs · Database'],['04','Website redesign','Refresh an outdated website with a clearer message and modern visual experience.','UI redesign · Mobile layout · Performance review']];
-const faqs=[['Do you work with small businesses?','Yes. I welcome enquiries from local businesses, startups and independent professionals.'],['Can you build both frontend and backend?','Yes. I work with React, Next.js, Node.js, Express and MongoDB. The exact architecture depends on your requirements.'],['How long will my project take?','I provide a timeline after reviewing the scope, content and required integrations.'],['Can you redesign my existing website?','Yes. Share the existing site and the changes you want.'],['Are hosting and domain included?','Hosting, domain and third-party services are quoted separately.'],['How do payments work?','Milestones, advance and final payment terms are agreed in writing before work starts.']];
-export default function Home(){const [filter,F]=useState('All');const [menu,M]=useState(false);const [brief,B]=useState('');const [copied,C]=useState(false);return <><header><a className="brand" href="#">SG<span>.</span></a><nav className={menu?'open':''}>{['Work','Services','About','Process','Pricing'].map(x=><a key={x} onClick={()=>M(false)} href={'#'+x.toLowerCase()}>{x}</a>)}</nav><a className="btn smallbtn" href="#contact">Hire me ↗</a><button className="toggle" aria-label="Toggle navigation" onClick={()=>M(!menu)}>☰</button></header><main><section className="hero"><div className="intro"><span className="eyebrow"><i/> OPEN TO FREELANCE PROJECT ENQUIRIES</span><h1>I build websites<br/>that mean<br/><em>business.</em></h1><p>Hi, I'm Saviyo George — a freelance full-stack developer from Kerala, India. I turn business ideas into modern websites and useful digital products.</p><div className="actions"><a className="btn" href="#contact">Discuss your project ↗</a><a className="outline" href="#work">See my work ↓</a></div></div><div className="visual"><div className="orbit o1"/><div className="orbit o2"/><div className="orbit o3"/><div className="monogram">SG<span>.</span></div><div className="floating f1">✳ &nbsp; Design with purpose</div><div className="floating f2">⌘ &nbsp; Built with code</div><div className="visualfoot">INDEPENDENT DEVELOPER <span>01 — 2026</span></div></div></section><div className="ticker">REACT <b>✳</b> NEXT.JS <b>✳</b> NODE.JS <b>✳</b> EXPRESS <b>✳</b> MONGODB</div><section id="work"><div className="sectionhead"><div><small>01 / SELECTED WORK</small><h2>Ideas into<br/>real experiences.</h2></div><p>Explore personal project concepts and practical development experience. Each project demonstrates a different business use case.</p></div><div className="filters">{['All','Hospitality','E-commerce','Business software'].map(x=><button key={x} className={filter===x?'active':''} onClick={()=>F(x)}>{x}</button>)}</div><div className="workgrid">{projects.filter(x=>filter==='All'||x.type===filter).map(x=><article key={x.name} className="workcard"><div className={'preview '+x.style}><div className="mock"><div className="mockbar">● ● ● <span>PROJECT CONCEPT</span></div><div className="mockbody"><strong>{x.mark}</strong><div className="mocklines"><i/><i/><i/></div><div className="mocktiles"><i/><i/><i/></div></div></div></div><div className="workinfo"><small>{x.type}</small><h3>{x.name}</h3><p>{x.desc}</p>{x.url?<a href={'https://github.com/saviyo9037/'+x.url} target="_blank" rel="noreferrer">Explore source ↗</a>:<span>Internship contribution</span>}</div></article>)}</div></section><section id="services"><small>02 / SERVICES</small><h2>What I can build<br/>for your business.</h2><div className="services">{services.map(([n,t,d,k])=><article key={n}><span className="number">{n} /</span><div><h3>{t}</h3><p>{d}</p><small>{k}</small></div><a href="#contact" aria-label={'Enquire about '+t}>↗</a></article>)}</div></section><section id="about" className="about"><div className="aboutart"><span>SG.</span><small>DEVELOPER / PROBLEM SOLVER</small></div><div><small>03 / ABOUT ME</small><h2>A developer who thinks beyond the code.</h2><p>I'm a BCA graduate and full-stack developer with internship experience at Irohub Infotech, contributing to a live CRM project across frontend and backend development.</p><p>My approach combines clean interfaces, practical functionality and clear communication. I focus on understanding what your business needs before deciding how to build it.</p><div className="tags">{['JavaScript','React','Next.js','Node.js','Express','MongoDB','REST APIs','Git'].map(t=><span key={t}>{t}</span>)}</div><a className="textlink" href="https://github.com/saviyo9037">Explore my GitHub ↗</a></div></section><section id="process"><small>04 / HOW WE WORK</small><h2>From first hello<br/>to final launch.</h2><div className="four">{[['01','Discover','Understand your goals, audience and requirements.'],['02','Design','Agree on the visual direction and key user journeys.'],['03','Develop','Build the agreed features and review progress.'],['04','Launch','Test, hand over and discuss ongoing support.']].map(([n,t,d])=><article key={n}><small>STEP {n}</small><h3>{t}</h3><p>{d}</p></article>)}</div></section><section id="pricing"><small>05 / PROJECT INVESTMENT</small><h2>Simple starting prices.</h2><div className="pricing">{[['Starter','4,999','For professionals and small businesses',['Single-page website','Mobile responsive layout','Contact section']],['Business','9,999','For growing businesses',['Up to five pages','Basic SEO setup','Enquiry flow']],['Custom','24,999+','For more complex requirements',['Custom functionality','Backend and database by scope','Dashboard by scope']]].map(([t,p,d,items],i)=><article key={t} className={i===1?'featured':''}><small>{i===1?'POPULAR OPTION':'PROJECT PACKAGE'}</small><h3>{t}</h3><strong>₹{p}</strong><p>{d}</p><ul>{items.map(x=><li key={x}>✓ {x}</li>)}</ul><a className="outline" href="#contact">Get a quote ↗</a></article>)}</div><p>Indicative starting prices. Final quotes depend on scope, integrations, hosting and content requirements.</p></section><section className="faq"><small>06 / QUESTIONS</small><h2>Good to know.</h2>{faqs.map(([q,a])=><details key={q}><summary>{q}</summary><p>{a}</p></details>)}</section><section id="contact" className="contact"><div><small>07 / LET'S COLLABORATE</small><h2>Have an idea?<br/>Let's make it <em>real.</em></h2><p>Tell me about your business, what you want to build and your preferred budget.</p><a className="textlink" href="https://github.com/saviyo9037">GitHub ↗</a><p className="note">Direct email and WhatsApp details are not configured yet. You can prepare and copy your project brief below.</p></div><form onSubmit={e=>{e.preventDefault();B([...new FormData(e.currentTarget).entries()].map(([k,v])=>k+': '+v).join('\n'));C(false)}}><label>Your name<input name="Name" required placeholder="John Doe"/></label><label>Email<input name="Email" type="email" required placeholder="you@business.com"/></label><label>Service<select name="Service">{services.map(x=><option key={x[0]}>{x[1]}</option>)}</select></label><label>Budget<select name="Budget"><option>Not sure yet</option><option>₹5,000–10,000</option><option>₹10,000–25,000</option><option>₹25,000+</option></select></label><label>Project details<textarea name="Project" required placeholder="What would you like to build?"/></label><button className="btn">Prepare project brief ↗</button>{brief&&<div className="result"><pre>{brief}</pre><button type="button" className="outline" onClick={async()=>{try{await navigator.clipboard.writeText(brief);C(true)}catch{C(false)}}}>{copied?'Copied':'Copy brief'}</button></div>}</form></section></main><footer><a className="brand" href="#">SG<span>.</span></a><span>© {new Date().getFullYear()} Saviyo George · Kerala, India</span><a href="#">Back to top ↑</a></footer></>}
+// Project Categories
+const PROJECT_CATEGORIES = {
+  ALL: "all",
+  COMPANY: "company",
+  PERSONAL: "personal",
+};
+
+const originalProjects = [
+  {
+    id: "erp-pos",
+    title: "ERP & POS Management System",
+    category: "company",
+    categoryLabel: "Company Work",
+    company: "D3innovatives",
+    type: "Company · D3innovatives",
+    description:
+      "Enterprise ERP with 10+ core modules (Inventory, Billing, POS), 40+ reusable React components, 20+ REST APIs via TanStack React Query, barcode scanning, and ESC/POS thermal printing.",
+    tech: "React, TypeScript, TanStack React Query, Tailwind CSS, REST APIs",
+    tags: ["React", "TypeScript", "TanStack Query", "Tailwind CSS", "REST API"],
+    liveUrl: "https://app.erpgen.com/auth/login",
+    githubUrl: null,
+    cta: "Live Demo",
+    image: "/erp.webp",
+    gradient: "from-emerald-400 to-cyan-500",
+    featured: true,
+  },
+  {
+    id: "overprint",
+    title: "OverPrint Desktop Application",
+    category: "company",
+    categoryLabel: "Company Work",
+    company: "D3innovatives",
+    type: "Company · D3innovatives",
+    description:
+      "Desktop printing bridge utility linking web POS applications to USB and network thermal printers; WebSocket communication, automated printer discovery, packaged with PyInstaller.",
+    tech: "Python, WebSocket, PyInstaller, Desktop Utility",
+    tags: ["Python", "WebSocket", "PyInstaller", "Desktop"],
+    liveUrl: null,
+    githubUrl: null,
+    cta: "Internal Tool",
+    image: "/covers/overprint.svg",
+    gradient: "from-orange-400 to-red-600",
+    featured: true,
+  },
+  {
+    id: "d3media-scraper",
+    title: "D3Media Scraper",
+    category: "company",
+    categoryLabel: "Company Work",
+    company: "D3innovatives",
+    type: "Company · D3innovatives",
+    description:
+      "FastAPI service that safely crawls websites with Scrapy and turns public data into competitor intelligence: SEO and content comparison, social and Meta ads insights, and client reports in PDF, HTML and JSON.",
+    tech: "Python, FastAPI, Scrapy, React, SQLite",
+    tags: ["Python", "FastAPI", "Scrapy", "React", "SQLite"],
+    liveUrl: null,
+    githubUrl: null,
+    cta: "Internal Tool",
+    image: "/covers/d3media-scraper.svg",
+    gradient: "from-teal-400 to-emerald-600",
+    featured: true,
+  },
+  {
+    id: "d3-sms",
+    title: "D3 SMS",
+    category: "company",
+    categoryLabel: "Company Work",
+    company: "D3innovatives",
+    type: "Company · D3innovatives",
+    description:
+      "Android app that forwards incoming SMS to configured webhooks, even when the app is closed. Smart matching rules, templated JSON payloads, retries with backoff and optional HMAC signing, all stored on the phone.",
+    tech: "Flutter, Kotlin, WorkManager, Android",
+    tags: ["Flutter", "Kotlin", "WorkManager", "Android"],
+    liveUrl: null,
+    githubUrl: null,
+    cta: "Internal Tool",
+    image: "/covers/d3-sms.svg",
+    gradient: "from-orange-500 to-red-600",
+    featured: true,
+  },
+  {
+    id: "betterinu-website",
+    title: "Betterinu Website",
+    category: "company",
+    categoryLabel: "Company Work",
+    company: "Betterinu",
+    type: "Company · Betterinu",
+    description:
+      "The marketing website for Betterinu (betterinu.com): a 3D-animated site that introduces Betty, Kerala's first AI learning companion, and collects leads. Built solo with React, Three.js, GSAP and Node.js as part of the Betterinu platform.",
+    tech: "React, Three.js, GSAP, Node.js",
+    tags: ["React", "Three.js", "GSAP", "Node.js"],
+    liveUrl: null,
+    publicUrl: "https://betterinu.com", // the public website: the only link shown for this company project
+    githubUrl: null,
+    cta: "Visit website",
+    image: "/betterinu-website.webp",
+    gradient: "from-lime-400 to-teal-500",
+    featured: true,
+  },
+  {
+    id: "betterinu-lms",
+    title: "Betterinu Platform",
+    category: "company",
+    categoryLabel: "Company Work",
+    company: "Betterinu",
+    type: "Company · Betterinu",
+    description:
+      "Three separate apps, sole developer, in production since May 2026.\n" +
+      "• Student LMS: Next.js, TypeScript, TanStack Query, Supabase Auth, PostgreSQL. Courses, curriculum, weekly tasks and reviews, attendance and leave. Used by 30+ students.\n" +
+      "• Admin Panel: Next.js, TypeScript, TanStack Query, Supabase, PostgreSQL. Student and course administration, plus HRMS, finance, CRM and Meta Ads analytics. Used daily by 10+ employees for attendance, leave, tasks and work reports.\n" +
+      "• Marketing Website (betterinu.com): React, Three.js, GSAP, Node.js. 3D-animated site with lead collection.",
+    tech: "Next.js, TypeScript, TanStack Query, Supabase, PostgreSQL, React, Three.js, GSAP, Node.js",
+    tags: ["Next.js", "TypeScript", "TanStack Query", "Supabase", "PostgreSQL", "React", "Three.js", "GSAP", "Node.js"],
+    liveUrl: "https://betterinu-admin-v1-jj9b.vercel.app/admin/loginext",
+    githubUrl: null,
+    cta: "Live Demo",
+    image: "/lms.jpeg",
+    gradient: "from-lime-400 to-teal-500",
+    featured: true,
+  },
+  {
+    id: "crm-live",
+    repo: "CRM", // links this entry to its GitHub repo so it is not listed twice
+    title: "CRM Live Project",
+    category: "company",
+    categoryLabel: "Company Work",
+    company: "Irohub Infotech",
+    type: "Company · Irohub Infotech",
+    description:
+      "MERN CRM with JWT authentication, role-based access control (RBAC), RESTful APIs for clients/business records, interactive dashboards, and optimized MongoDB schema design.",
+    tech: "MongoDB, Express, React, Node.js, JWT, RBAC",
+    tags: ["MongoDB", "Express", "React", "Node.js", "JWT"],
+    liveUrl: null,
+    githubUrl: null,
+    cta: "Internal Platform",
+    image: "/covers/crm-live.svg",
+    gradient: "from-blue-500 to-indigo-600",
+    featured: true,
+  },
+  {
+    id: "moneytrack",
+    title: "MoneyTrack",
+    category: "personal",
+    categoryLabel: "Personal Project",
+    company: null,
+    type: "Personal Mobile App",
+    description:
+      "Offline-first automatic expense management app with SMS transaction detection, duplicate prevention, category analytics, smart budgets, and encrypted SQLite persistence.",
+    tech: "Flutter, Dart, Riverpod, Drift, SQLite",
+    tags: ["Flutter", "Dart", "Riverpod", "Drift", "SQLite"],
+    liveUrl: "https://github.com/saviyo9037/money-tracking-app",
+    githubUrl: "https://github.com/saviyo9037/money-tracking-app",
+    cta: "GitHub",
+    image: "/moneytrac.jpeg",
+    gradient: "from-amber-400 to-rose-500",
+    featured: true,
+  },
+  {
+    id: "apzxrtra-lms",
+    title: "Apzxrtra LMS",
+    category: "company",
+    categoryLabel: "Company Work",
+    company: "D3innovatives",
+    type: "Company · D3innovatives",
+    description:
+      "Enterprise Academic ERP & LMS with AI study planning, student/faculty portals, placement ERP, ATS resume matcher, and fee/EMI management dashboards.",
+    tech: "Next.js 15, React 19, TypeScript, Tailwind CSS",
+    tags: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS"],
+    liveUrl: "https://github.com/saviyo9037/lms",
+    githubUrl: "https://github.com/saviyo9037/lms",
+    cta: "GitHub",
+    image: "/apzxrtra.webp",
+    gradient: "from-sky-400 to-violet-500",
+    featured: true,
+  },
+  {
+    id: "nova-voice-os",
+    title: "NOVA Voice OS",
+    category: "personal",
+    categoryLabel: "Personal Project",
+    company: null,
+    type: "Personal AI Project",
+    description:
+      "Modular AI-powered voice operating system with real-time speech-to-text, LLM intent processing, multilingual TTS synthesis, and offline NLP fallback architecture.",
+    tech: "React, TypeScript, Node.js, Express, Sarvam AI, OpenAI, Framer Motion",
+    tags: ["React", "TypeScript", "Node.js", "Express", "Sarvam AI", "OpenAI"],
+    liveUrl: "https://github.com/saviyo9037/speech-ai",
+    githubUrl: "https://github.com/saviyo9037/speech-ai",
+    cta: "GitHub",
+    image: "/covers/nova-voice-os.svg",
+    gradient: "from-fuchsia-500 to-indigo-500",
+    featured: true,
+  },
+  {
+    id: "rabbit-ecommerce",
+    title: "Rabbit-Ecommerce",
+    category: "personal",
+    categoryLabel: "Personal Project",
+    company: null,
+    type: "Personal Project",
+    description:
+      "Full-stack MERN e-commerce application with dynamic product filtering, cart & checkout pipelines, user auth, and scalable order management REST endpoints.",
+    tech: "MERN Stack, React, Node.js, MongoDB, Express, REST API",
+    tags: ["MERN", "React", "Node.js", "MongoDB", "Express"],
+    liveUrl: "https://rabbit-h7kc.vercel.app/",
+    githubUrl: null,
+    cta: "Live Demo",
+    image: "/rabbit.webp",
+    gradient: "from-rose-500 to-purple-600",
+    featured: false,
+  },
+  {
+    id: "labcare-clinical-os",
+    title: "LabCare Clinical OS",
+    category: "personal",
+    categoryLabel: "Personal Project",
+    company: null,
+    type: "Prototype · Live Demo",
+    description:
+      "Automated diagnostic intelligence and laboratory clinical OS prototype featuring specimen tracking, technician queue orchestration, and live demo clinic workflows.",
+    tech: "TypeScript, React, Node.js, Express, Healthcare Systems, Role-based Auth",
+    tags: ["Prototype", "TypeScript", "React", "Laboratory", "Live Demo"],
+    language: "TypeScript",
+    updatedAt: "2026-11-23T12:00:00Z",
+    liveUrl: "https://lab-clinic-management.vercel.app",
+    githubUrl: null,
+    cta: "Prototype Demo",
+    image: "/labcare-dashboard.png",
+    gradient: "from-cyan-500 to-blue-600",
+    featured: false,
+  },
+  {
+    id: "lab-clinic-management",
+    repo: "Lab-clinic-Management",
+    title: "Lab Management System",
+    category: "personal",
+    categoryLabel: "Freelance Project",
+    company: null,
+    type: "Freelance Project",
+    description:
+      "Developed a laboratory management system to streamline diagnostic lab operations—handling patient registration & management, laboratory test management, sample collection tracking, test result management, digital report generation, billing & payment management, and real-time dashboard analytics.\n\nObjective: To reduce manual work, improve accuracy, and make laboratory operations faster and more efficient.",
+    tech: "Next.js, React, TypeScript, Node.js, MongoDB",
+    tags: ["Freelance", "Next.js", "TypeScript", "React", "Node.js", "MongoDB"],
+    language: "TypeScript",
+    updatedAt: "2026-11-20T12:00:00Z",
+    liveUrl: null,
+    githubUrl: null,
+    cta: "Private Freelance Project",
+    hideLinks: true,
+    private: true,
+    freelance: true,
+    image: "",
+    gradient: "from-purple-600 to-indigo-700",
+    featured: false,
+  },
+  {
+    id: "hospital-management",
+    title: "Hospital Management",
+    category: "personal",
+    categoryLabel: "Personal Project",
+    company: null,
+    type: "Personal Project",
+    description:
+      "Healthcare management platform featuring role-based dashboards, appointment scheduling workflows, real-time messaging, and patient record management.",
+    tech: "React, Node.js, Express, Healthcare Systems, Role-based Auth",
+    tags: ["React", "Node.js", "Express", "Role Auth"],
+    liveUrl: "https://hospital-frontend-phi-sandy.vercel.app",
+    githubUrl: null,
+    cta: "Live Demo",
+    image: "/hospital.webp",
+    gradient: "from-teal-400 to-emerald-600",
+    featured: false,
+  },
+  {
+    id: "buildcraft-construction",
+    title: "BuildCraft Construction Website",
+    category: "personal",
+    categoryLabel: "Upcoming",
+    statusLabel: "Upcoming",
+    company: null,
+    type: "Upcoming Project",
+    description:
+      "A minimal, responsive portfolio website concept for a construction company, featuring services, project showcases with status filters, a founder profile and video section, and contact calls to action. This is a frontend prototype; backend, database and admin features are not included.",
+    tech: "HTML, CSS, JavaScript, Responsive Web Design",
+    tags: ["HTML", "CSS", "JavaScript", "Responsive UI"],
+    liveUrl: "https://buildcraft-construction-rho.vercel.app",
+    githubUrl: "https://github.com/saviyo9037/testing-",
+    cta: "Preview",
+    image: "",
+    gradient: "from-stone-400 to-amber-700",
+    featured: true,
+  },
+];
+
+// To add a new experience or education, append a new object to this array.
+const experience = [
+  {
+    type: "work",
+    company: "D3innovatives",
+    role: "MERN Stack Developer",
+    period: "Apr 2026–Present",
+    location: "Malappuram, Kerala",
+    employmentType: "Full-Time",
+    current: true,
+    description: "Developed and maintained enterprise-level ERP and POS applications using React.js, TypeScript, and Tailwind CSS. Built 40+ reusable, accessible UI components with modern React architecture. Integrated 20+ REST APIs with TanStack React Query for caching, server-state sync, and dynamic forms.",
+    highlights: [
+      "Engineered 10+ core ERP modules: Product, Customer, Inventory, Billing, POS, and Financial Reports.",
+      "Architected hardware integrations: barcode generation, receipt customization, thermal printer config, and WebSocket-based printing.",
+      "Collaborated in an agile Git workflow to maintain production CI/CD pipelines and ship scalable features."
+    ],
+    skills: ["React.js", "TypeScript", "Tailwind CSS", "TanStack React Query", "WebSocket", "REST APIs", "Git"]
+  },
+  {
+    type: "work",
+    company: "Irohub Infotech",
+    role: "MERN Stack Development Intern",
+    period: "Jun 2025–Dec 2025",
+    location: "Ernakulam, Kerala",
+    employmentType: "Internship",
+    description: "Hands-on real-world application engineering using the full MERN stack. Designed scalable MongoDB schemas, implemented secure JWT authentication, and connected interactive React client dashboards to Express.js REST APIs.",
+    highlights: [
+      "Constructed a full-featured CRM web platform with JWT auth, role-based access, and client management.",
+      "Built performant RESTful endpoints in Express.js with input validation and error handling middlewares.",
+      "Optimized front-end data fetching and state synchronization with modern React hooks."
+    ],
+    skills: ["MongoDB", "Express.js", "React.js", "Node.js", "JWT", "REST API", "Postman"]
+  },
+  {
+    type: "work",
+    company: "Avodha",
+    role: "PHP Full Stack Development Intern",
+    period: "Aug 2024–Feb 2025",
+    location: "Ernakulam, Kerala",
+    employmentType: "Internship",
+    description: "Trained in full-stack web application development with PHP and MySQL. Developed database-driven websites, implemented session-based user authentication, and crafted responsive user interfaces.",
+    highlights: [
+      "Built dynamic CRUD web applications using vanilla PHP and MySQL relational databases.",
+      "Designed clean database schemas with primary/foreign keys and optimized SQL queries.",
+      "Developed responsive front-end layouts using HTML5, CSS3, Bootstrap, and JavaScript."
+    ],
+    skills: ["PHP", "MySQL", "JavaScript", "HTML5", "CSS3", "Bootstrap", "XAMPP"]
+  },
+  {
+    type: "education",
+    institution: "Sree Sabareesa College Murikkumvayal",
+    degree: "Bachelor of Computer Applications (BCA)",
+    period: "Sep 2021 – Mar 2024",
+    location: "Kottayam, Kerala",
+    university: "Mahatma Gandhi University",
+    grade: "Completed with Distinction",
+    status: "Degree Conferred",
+    description: "Three-year intensive undergraduate degree in Computer Applications providing strong theoretical foundations in computer science alongside practical application development, algorithm design, and database systems.",
+    coursework: [
+      "Data Structures & Algorithms",
+      "Database Management Systems (RDBMS)",
+      "Object-Oriented Programming (OOP)",
+      "Web Technologies & Scripting",
+      "Computer Networks & Security",
+      "Software Engineering & SDLC",
+      "Operating Systems Architecture",
+      "System Analysis & Design"
+    ],
+    milestones: [
+      { label: "Core Foundation", desc: "Algorithmic thinking, discrete mathematics, and C/C++ computing foundations." },
+      { label: "Full Stack Mastery", desc: "Engineered web applications, relational schemas, and dynamic client architectures." },
+      { label: "Capstone Engineering", desc: "Developed comprehensive real-world applications adhering to strict software engineering methodologies." }
+    ]
+  }
+];
+
+const projects=[{id:'stay',title:'StayKerala',category:'personal',type:'Hospitality · Demo',description:'Resort discovery and booking frontend concept.',tags:['Next.js','Hospitality'],githubUrl:'https://github.com/saviyo9037/stay_kerala'},{id:'vernon',title:'Vernon Men',category:'personal',type:'Retail · Demo',description:'Premium menswear storefront concept.',tags:['Next.js','E-commerce'],githubUrl:'https://github.com/saviyo9037/Vernon-men'},...originalProjects];
+const services=[['01','Business websites','Turn visitors into enquiries with a responsive, clear business website.'],['02','E-commerce','Showcase products and build a smooth shopping journey.'],['03','ERP, POS & CRM','Simplify billing, inventory, customer management and daily operations.'],['04','Custom web & mobile apps','Build tailored workflows, dashboards and integrations.'],['05','AI & automation','Explore practical automation and AI tools for repetitive work.'],['06','Website redesign','Modernize your existing website and mobile experience.']];
+const wa='https://wa.me/919037348073';
+export default function Home(){const [filter,F]=useState('Featured');const [menu,M]=useState(false);return <><header><a className="brand" href="#">SG<span>.</span></a><nav className={menu?'open':''}>{['Services','Work','About','Process'].map(x=><a key={x} href={'#'+x.toLowerCase()} onClick={()=>M(false)}>{x}</a>)}</nav><a className="btn smallbtn" href={wa}>Let's talk ↗</a><button className="toggle" onClick={()=>M(!menu)} aria-label="Toggle navigation" aria-expanded={menu}>☰</button></header><main><section className="hero"><div><span className="eyebrow">● KERALA · INDEPENDENT DEVELOPER</span><h1>Build better.<br/><em>Grow digitally.</em></h1><p>I'm Saviyo George. I build modern websites, online stores and business software that help businesses connect with customers and simplify operations.</p><div className="actions"><a className="btn" href="#contact">Get a free quote ↗</a><a className="outline" href="#work">Explore work ↓</a></div></div><div className="glass heroart"><div className="orb"/><img className="avatar" src="https://raw.githubusercontent.com/saviyo9037/portfolio/main/src/assets/saviyo-avatar.webp" alt="Saviyo George"/><div className="profile"><strong>Saviyo George</strong><span>Full-stack developer</span></div><div className="float">✦ Business-first development</div></div></section><div className="metrics">{[['40+','Reusable UI components'],['20+','REST API integrations'],['10+','ERP modules']].map(([n,t])=><div className="glass" key={t}><strong>{n}</strong><span>{t}</span><small>Professional experience</small></div>)}</div><section id="services"><small>01 / WHAT I BUILD</small><h2>Digital solutions for <em>your business.</em></h2><div className="grid">{services.map(([n,t,d])=><article className="glass" key={n}><small>{n} / SERVICE</small><h3>{t}</h3><p>{d}</p><a href="#contact">Discuss your needs ↗</a></article>)}</div></section><section id="work"><small>02 / SELECTED WORK</small><h2>See what's <em>possible.</em></h2><p>Professional contributions, freelance work and personal demonstrations, clearly identified.</p><div className="filters">{['Featured','All','Company','Freelance','Personal'].map(x=><button key={x} className={filter===x?'active':''} onClick={()=>F(x)}>{x}</button>)}</div><div className="grid work">{projects.filter(x=>filter==='All'||filter==='Featured'&&(x.featured||['stay','vernon','lab-clinic-management'].includes(x.id))||filter==='Company'&&x.category==='company'||filter==='Freelance'&&x.freelance||filter==='Personal'&&x.category==='personal'&&!x.freelance).map(x=><article className="glass" key={x.id}>{x.image?<img className="projectimg" loading="lazy" src={'https://raw.githubusercontent.com/saviyo9037/portfolio/main/public'+x.image} alt={x.title+' project preview'}/>:<div className="placeholder">{x.title}</div>}<small>{x.type}</small><h3>{x.title}</h3><p>{x.description}</p><div className="tags">{x.tags?.map(t=><span key={t}>{t}</span>)}</div>{!x.hideLinks&&(x.publicUrl||x.liveUrl||x.githubUrl)&&<a href={x.publicUrl||x.liveUrl||x.githubUrl} target="_blank" rel="noreferrer">Explore project ↗</a>}</article>)}</div></section><section id="about"><small>03 / EXPERIENCE</small><h2>Real experience. <em>Practical solutions.</em></h2><div className="grid">{experience.filter(x=>x.type==='work').map(x=><article className="glass" key={x.company}><small>{x.period}</small><h3>{x.company}</h3><strong>{x.role}</strong><p>{x.description}</p></article>)}</div><p>BCA · Mahatma Gandhi University · 2021–2024</p><a href="https://github.com/saviyo9037">GitHub ↗</a> · <a href="https://linkedin.com/in/saviyo-george">LinkedIn ↗</a></section><section id="process"><small>04 / HOW IT WORKS</small><h2>From idea to <em>launch.</em></h2><div className="grid steps">{[['01','Discover'],['02','Design'],['03','Develop'],['04','Launch']].map(([n,t])=><article className="glass" key={n}><small>STEP {n}</small><h3>{t}</h3></article>)}</div></section><section id="contact" className="contact glass"><div><small>05 / START A PROJECT</small><h2>Let's build something <em>useful.</em></h2><p>Tell me your goals. I'll suggest a suitable scope and custom quotation.</p><a className="btn" href={wa}>Chat on WhatsApp ↗</a><p><a href="mailto:saviyogeorge903734@gmail.com">Email me ↗</a> · <a href="tel:+919037348073">Call me ↗</a></p></div><form onSubmit={e=>{e.preventDefault();const msg=[...new FormData(e.currentTarget)].map(([k,v])=>k+': '+v).join('\n');window.location.href=wa+'?text='+encodeURIComponent(msg)}}><label>Name<input name="Name" required/></label><label>Service<select name="Service">{services.map(x=><option key={x[0]}>{x[1]}</option>)}</select></label><label>Budget<select name="Budget"><option>Need a quotation</option><option>Under ₹10,000</option><option>₹10,000–25,000</option><option>₹25,000+</option></select></label><label>Project details<textarea name="Project" required/></label><button className="btn">Continue to WhatsApp ↗</button></form></section></main><footer>© {new Date().getFullYear()} Saviyo George · Kerala, India <a href="#">Back to top ↑</a></footer><a className="whatsapp" href={wa} aria-label="Chat on WhatsApp">WhatsApp ↗</a></>}
