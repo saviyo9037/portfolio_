@@ -1,0 +1,1 @@
+import './globals.css'; export const metadata={title:'NovaStack Studio | Websites that work',description:'Independent web development studio in Kerala.'}; export default function Layout({children}){return <html lang="en"><body>{children}</body></html>}
